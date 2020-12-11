@@ -5,6 +5,9 @@ const expressLayouts = require('express-ejs-layouts')
 
 let app = express();
 
+//calling static files
+app.use(express.static('./assets'))
+
 app.set('view engine', 'ejs');
 app.set('views', './views')
 
