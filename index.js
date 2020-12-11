@@ -5,13 +5,17 @@ const expressLayouts = require('express-ejs-layouts')
 
 let app = express();
 
+app.use(expressLayouts);
+
 //calling static files
 app.use(express.static('./assets'))
 
+//extracting styles & scripts & putting into layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
 app.set('view engine', 'ejs');
 app.set('views', './views')
-
-app.use(expressLayouts);
 
 app.use('/', require('./routes/index'))
 
