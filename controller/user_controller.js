@@ -15,3 +15,9 @@ module.exports.signup = function(req, res){
         title :'User Sign-in'
     });
 };
+
+// getting the sign-up data
+module.exports.create = function(req, res){}
+//later
+
+module.exports.createSession = function(req, res){}
