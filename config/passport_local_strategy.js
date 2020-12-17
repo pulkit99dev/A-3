@@ -61,5 +61,13 @@ passport.setAuthenticatedUser = function(req, res, next){
     next();
 }
 
+//if the user is already signed in then website shouldn't show the sign-in page
+// passport.displaySignup = function(req, res, next){
+//     if(req.isAuthenticated){
+//         res.redirect('/user/profile');
+//     }
+//     next()
+// }
+
 
 module.exports = passport;

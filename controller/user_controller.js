@@ -1,20 +1,30 @@
 let User = require('../models/user')
 
 module.exports.user = function(req, res){
-    res.render('user', {
+    return res.render('user', {
         title : 'User Profile'
     });
 }
 
 module.exports.login = function(req, res){
+
+    if(req.isAuthenticated()){
+       return res.redirect('/user/profile');
+    };
+
     return res.render('login', {
         title : 'User Login'
     });
 };
 
 module.exports.signup = function(req, res){
+
+     if(req.isAuthenticated()){
+        return res.redirect('/user/profile');
+ };
+
     return res.render('signup',{
-        title :'User Sign-in'
+        title :'User Sign-up'
     });
 };
 
