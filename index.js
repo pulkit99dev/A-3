@@ -4,6 +4,11 @@ const port = 8000;
 const expressLayouts = require('express-ejs-layouts')
 const db = require('./config/mongoose')
 
+// Used for session cookie
+const session = require('express-session');
+const passport = require('passport')
+const passportLocal = require('./config/passport_local_strategy');
+
 
 let app = express();
 
@@ -21,6 +26,26 @@ app.set('layout extractScripts', true);
 
 app.set('view engine', 'ejs');
 app.set('views', './views')
+
+
+
+app.use(session({
+    name : 'A-3',
+    //todo change the secret key before deployment
+    secret : 'something',
+//if the user is not signed in , then do you want to save extra data in session cookie (no), then false
+    saveUninitialized : false,
+//if no changes are made to the existing data do you want to rewrite the cookie id
+    resave : false,
+    cookie : {
+        maxAge : (1000 * 60 * 100)
+    }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 app.use('/', require('./routes/index'))
 
