@@ -12,8 +12,20 @@ const passportLocal = require('./config/passport_local_strategy');
 //mongo store
 const MongoStore = require('connect-mongo')(session);
 
+//sass
+const sassMiddleware = require('node-sass-middleware');
+
 
 let app = express();
+
+//calling & compiling sass or scss
+app.use(sassMiddleware({
+    src : './assets/scss',
+    dest : './assets/css',
+    debug : true,
+    outputStyle : 'expanded',
+    prefix :'/css'
+}))
 
 app.use(express.urlencoded());
 app.use(cookieParser());
