@@ -8,6 +8,13 @@
         <%- include('_header.ejs'); %> -->
         <link rel="stylesheet" href="/css/home.css">
         <h1>Home Page</h1>
+
+        <section id="posted-content">
+            <form action="/user/createPost" method="post">
+            <textarea name="content" id="" cols="30" rows="4" placeholder="Type here..."></textarea>
+            <input type="submit" value="Post">
+            </form>
+        </section>
         <!-- <%- include('_footer.ejs'); %>
     </body>
 </html> -->

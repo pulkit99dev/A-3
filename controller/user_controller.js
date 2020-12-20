@@ -1,4 +1,5 @@
-let User = require('../models/user')
+let User = require('../models/user');
+let Post = require('../models/post');
 
 module.exports.user = function(req, res){
     return res.render('user', {
@@ -59,4 +60,16 @@ module.exports.destroySession = function(req, res){
     req.logout();
 
     return res.redirect('/')
+}
+
+//creating post
+module.exports.createPost = function(req, res){
+    Post.create(req.body, function(err, post){
+        if(err){console.log(`Error while creating post`);
+        return;
+    }
+        else{
+            return res.redirect('/user/home')
+        }
+    })
 }
