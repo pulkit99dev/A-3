@@ -14,6 +14,18 @@
             <textarea name="content" id="" cols="30" rows="4" placeholder="Type here..."></textarea>
             <input type="submit" value="Post">
             </form>
+
+            <div>
+                
+                <ul>
+                    <% for (post of posts) { %>
+                        <li><h2><%= post.user.name %></h2>
+                            <p><%= post.content %></p>
+                        </li>
+                        <% } %>
+                </ul>
+                    
+            </div>
         </section>
         <!-- <%- include('_footer.ejs'); %>
     </body>
