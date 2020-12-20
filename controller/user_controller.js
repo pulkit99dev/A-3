@@ -62,14 +62,3 @@ module.exports.destroySession = function(req, res){
     return res.redirect('/')
 }
 
-//creating post
-module.exports.createPost = function(req, res){
-    Post.create(req.body, function(err, post){
-        if(err){console.log(`Error while creating post`);
-        return;
-    }
-        else{
-            return res.redirect('/user/home')
-        }
-    })
-}

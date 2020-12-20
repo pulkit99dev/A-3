@@ -8,6 +8,8 @@ router.get('/', homeController.home);
 
 router.use('/user', require('./user'));
 
+router.use('/posts', require('./posts'))
+
 
 // // Sign-up page
 // router.use('/user', require('./signup'));
