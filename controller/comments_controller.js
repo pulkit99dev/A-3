@@ -10,7 +10,7 @@ module.exports.create = function(req, res){
                 post = req.user.post
             },
             function(err, comment){
-                post.comment.push(comment);
+                post.comments.push(comment);
                 post.save();
                 res.redirect('/')
             }
