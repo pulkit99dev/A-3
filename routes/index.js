@@ -2,13 +2,16 @@ const express = require('express');
 
 let router = express.Router();
 
-const homeController = require('../controller/home_controller');
+const homeController = require('../controllers/home_controller');
 
 router.get('/', homeController.home);
 
 router.use('/user', require('./user'));
 
 router.use('/posts', require('./posts'))
+
+//creating comments
+router.use('/comments', require('./comments'));
 
 
 // // Sign-up page
