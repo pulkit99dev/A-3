@@ -27,6 +27,9 @@
                             <p><%= post.content %></p>
                             <br>
                             <small><%= post.user.name %></small>
+                            <% if (locals.user && locals.user.id == post.user.id) { %>
+                            <p><a href="/posts/destroy/<%= post.id %>">Delete</a></p>
+                            <% } %>
         
                           <div>
                               <% if (locals.user) { %>
