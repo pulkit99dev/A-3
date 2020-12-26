@@ -8,3 +8,8 @@ body {
   position: absolute;
   left: 15px;
 }
+
+.post-comments {
+  padding-left: 4rem;
+  margin-top: -2rem;
+}

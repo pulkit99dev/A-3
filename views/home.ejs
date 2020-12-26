@@ -23,8 +23,10 @@
                 
                 <ul>
                     <% for (post of posts) { %>
-                        <li><h4><%= post.user.name %></h4>
+                        <li>
                             <p><%= post.content %></p>
+                            <br>
+                            <small><%= post.user.name %></small>
         
                           <div>
                               <% if (locals.user) { %>
@@ -34,25 +36,21 @@
                                     <input type="submit" value="Add Comment">
                                 </form>
                               <% } %>
-
+                              
                               <div class="post-comments">
+                                <ul id="post-comments-<%= post._id %>">
                                   <% for (comment of post.comments){ %>
-                                    <p>
-                                        <%= comment.content %>
+                                    <p style="display: block;"><%= comment.content %>
                                         <br>
                                         <small>
-                                            <%= post.user.name %>
+                                            <%= comment.user.name %>
                                         </small>
-                                    </p>
+                                        </p>
                                     <% } %>
+                                </ul>
                               </div>
 
                           </div>
-
-
-                            <div>
-                                
-                            </div>
 
                         </li>
                         <% } %>
