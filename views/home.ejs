@@ -29,6 +29,14 @@
                     
             </div>
         </section>
+        <section>
+            <h4>friends</h4>
+            <% for (u of all_users){ %>
+                <p>
+                    <a href="/user/profile/<%= u.id %>"><%= u.name %></a>
+                </p>
+            <% } %>
+        </section>
         <!-- <%- include('_footer.ejs'); %>
     </body>
 </html> -->

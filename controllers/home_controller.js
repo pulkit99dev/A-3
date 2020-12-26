@@ -1,5 +1,6 @@
 const Post = require("../models/post");
 const { post } = require("../routes");
+const User = require('../models/user');
 
 module.exports.home = function(req, res){
 
@@ -23,9 +24,13 @@ module.exports.home = function(req, res){
     })
     .exec(function(err, posts){
         //if(err){console.log(`Error while finding`)}
-        return res.render('home', {
-        title : 'A-3',
-        posts : posts
-    });
+        User.find({}, function(err, users){
+            return res.render('home', {
+                title : 'A-3',
+                posts : posts,
+                all_users : users
+            });
+        })
+       
     })
 }
