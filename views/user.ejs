@@ -9,6 +9,7 @@
         <p>My Email:<%= profile_user.email %></p>
             <p>My Name: <%= profile_user.name %></p>
 
+<section id="friends-list">
         <% if(user.id == profile_user.id) {%> 
             <form action="/user/update/<%= profile_user.id %>" method="post">
             <input type="text" name="name" placeholder="Enter Name" value="<%= profile_user.name %>" required>
@@ -20,6 +21,7 @@
             <p>My Email:<%= profile_user.email %></p>
             <p>My Name: <%= profile_user.name %></p>
         <% } %>
+</section>
         <!-- <%- include('_footer.ejs'); %>
     </body>
 </html> -->
