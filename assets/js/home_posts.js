@@ -1,4 +1,5 @@
 {
+ // method to submit the form data for new post using AJAX
     let createPost = function(){
         let newPostForm = $('#new-post-form');
 
@@ -6,49 +7,46 @@
             e.preventDefault();
 
         $.ajax({
-            type : 'post',
-            url : '/posts/create',
-            data : newPostForm.serialize(),
-            success : function(data){
+            type: 'post',
+            url: '/posts/create',
+            data: newPostForm.serialize(),
+            success: function(data){
                 let newPost = newPostDom(data.data.post);
-                $('#post-list-container>ul').prepend(newPost)
+                $('#posts-list-container>ul').prepend(newPost);
             }, error: function(error){
-                console.log(error.responseText)
+                console.log(error.responseText);
             }
-
-        })
-        })
+        });
+        });
     }
 
     //dom
     let newPostDom = function(post){
-        return $(`
-                    <li id="post-${post._id}">
-                <p>${ post.content }</p>
-                <br>
-                <small>${ post.user.name }</small>
+        return $(`<li id="post-${post._id}">
+                    <p>${ post.content }</p>
+                    <br>
+                    <small>${ post.user.name }</small>
                 
-                <p><a class="delete-post-button" href="/posts/destroy/${ post._id }">Delete</a></p>
+                    <p><a class="delete-post-button" href="/posts/destroy/${ post._id }">Delete</a></p>
                 
 
-            <div>
+                <div>
                 
                     <form action="/comments/create" method="POST">
                         <input type="text" name="content" placeholder="Type Here to add comment..." required>
-                        <input type="hidden" name="post" value="${post._id}" >
+                        <input type="hidden" name="post" value="${ post._id }" >
                         <input type="submit" value="Add Comment">
                     </form>
                 
                 
-                <div class="post-comments">
-                    <ul id="post-comments-${post._id}">
-                    </ul>
+                    <div class="post-comments">
+                        <ul id="post-comments-${post._id}">
+                        </ul>
+                    </div>
+                
                 </div>
 
-            </div>
-
-            </li>
-                    `)
+            </li>`)
     }
 
     createPost();
