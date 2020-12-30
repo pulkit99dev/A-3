@@ -1,6 +1,10 @@
 let User = require('../models/user');
 let Post = require('../models/post');
 
+const fs = require('fs');
+const path = require('path')
+
+
 module.exports.user = function(req, res){
     User.findById(req.params.id, function(err, user){
         return res.render('user', {
@@ -23,6 +27,11 @@ module.exports.update = async function(req, res){
                 user.email = req.body.email;
 
                 if(req.file){
+
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname, '..', user.avatar))
+                    }
+
                     user.avatar = User.avatarPath + '/' + req.file.filename
                 }
                 user.save();
