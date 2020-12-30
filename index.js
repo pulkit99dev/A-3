@@ -10,10 +10,6 @@ const passport = require('passport')
 const passportLocal = require('./config/passport_local_strategy');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
-const multer = require('multer');
-
-
-const uploads = multer({dest: './uploads/images'})
 
 //mongo store
 const MongoStore = require('connect-mongo')(session);
