@@ -37,6 +37,9 @@ app.use(expressLayouts);
 //calling static files
 app.use(express.static('./assets'))
 
+//* make the uploads path available to the browser
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
 //extracting styles & scripts & putting into layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);

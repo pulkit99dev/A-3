@@ -5,7 +5,9 @@
     <body>
         <%- include('_header.ejs'); %> -->
         <link rel="stylesheet" href="/css/user.css">
-        <h1>User's Profile</h1>
+        
+        <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
+
         <p>My Email:<%= profile_user.email %></p>
             <p>My Name: <%= profile_user.name %></p>
 
