@@ -11,9 +11,6 @@
 
 <section id="friends-list">
         <% if(user.id == profile_user.id) {%> 
-            <form action="/user/avatar" method="post" enctype="multipart/form-data" >
-                <input type="file" name="avatar" id="">
-            </form>
             <form action="/user/update/<%= profile_user.id %>" enctype="multipart/form-data" method="post">
             <input type="file" name="avatar" id="" placeholder="Profile Picture">
             <input type="text" name="name" placeholder="Enter Name" value="<%= profile_user.name %>" required>
