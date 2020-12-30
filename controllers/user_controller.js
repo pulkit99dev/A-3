@@ -77,3 +77,7 @@ module.exports.destroySession = function(req, res){
     return res.redirect('/')
 }
 
+module.exports.uploads = function(req, res){
+    req.file('')
+}
+

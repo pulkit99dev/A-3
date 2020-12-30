@@ -10,6 +10,10 @@ const passport = require('passport')
 const passportLocal = require('./config/passport_local_strategy');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
+const multer = require('multer');
+
+
+const uploads = multer({dest: './uploads/images'})
 
 //mongo store
 const MongoStore = require('connect-mongo')(session);
@@ -52,7 +56,7 @@ app.use(session({
     secret : 'something',
 //if the user is not signed in , then do you want to save extra data in session cookie (no), then false
     saveUninitialized : false,
-//if no changes are made to the existing data do you want to rewrite the cookie id
+//^ if no changes are made to the existing data do you want to rewrite the cookie id
     resave : false,
     cookie : {
         maxAge : (1000 * 60 * 100)
