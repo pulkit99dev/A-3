@@ -13,6 +13,9 @@ router.use('/posts', require('./posts'))
 //creating comments
 router.use('/comments', require('./comments'));
 
+//* setting up api
+router.use('/api', require('./api'))
+
 
 // // Sign-up page
 // router.use('/user', require('./signup'));
