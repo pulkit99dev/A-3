@@ -11,16 +11,14 @@ passport.use(new googleStrategy({
     function(accessToken, refreshToken, profile, done){
         User.findOne({email : profile.emails[0].value}).exec(function(err, user){
             if(err){console.log('error in google strategy-passport', err); return;}
-
-            console.log(profile);
-
+            console.log(profile)
             if(user){
                 return done(null, user)
             }else{
                 User.create({
                     name : profile.display,
                     email: profile.emails[0].value,
-                    password : crypto.randomBytes(20).toString('hex');
+                    password : crypto.randomBytes(20).toString('hex')
                 },function(err, user){
                     if(err){console.log('error in creating user', err); return;}
                     return done(null, user)

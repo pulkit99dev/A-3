@@ -27,6 +27,9 @@ router.post('/create-session', passport.authenticate(
     {failureRedirect: '/user/log-in'}
 ) , userController.createSession)
 
+router.get('/auth/google', passport.authenticate('google', {scope : ['profile', 'email']}));
+router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/user/log-in'}), userController.createSession)
+
 //creting posts
 
 module.exports = router;

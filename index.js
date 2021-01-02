@@ -4,6 +4,8 @@ const port = 8000;
 const expressLayouts = require('express-ejs-layouts')
 const db = require('./config/mongoose')
 
+const passportGoogle = require('./config/passport-google-oauth2-strategy')
+
 // Used for session cookie
 const session = require('express-session');
 const passport = require('passport')
